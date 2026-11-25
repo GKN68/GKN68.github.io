@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PicoSim — Ginam Kim</title>
+  <meta name="description" content="A real-time vehicle dynamics simulator for a Formula Student car, aimed at self-calibration from real data and simulation-based design.">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html"><svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="18.6" fill="#fffdf8" stroke="#d6cdb8" stroke-width="1.4"/><path d="M35.4 20.0L38.2 20.0" stroke="#b9b2a2" stroke-width="1.2" stroke-linecap="round"/><path d="M20.0 35.4L20.0 38.2" stroke="#b9b2a2" stroke-width="1.2" stroke-linecap="round"/><path d="M4.6 20.0L1.8 20.0" stroke="#b9b2a2" stroke-width="1.2" stroke-linecap="round"/><path d="M20.0 4.6L20.0 1.8" stroke="#b9b2a2" stroke-width="1.2" stroke-linecap="round"/><circle cx="20" cy="20" r="10" stroke="#e6dfcf" stroke-width="1"/><path d="M6 20h11M23 20h11M20 6v11M20 23v11" stroke="#e6dfcf" stroke-width="0.9"/><circle cx="32.3" cy="14.0" r="1.08" fill="#e6b400" opacity="0.47"/><circle cx="31.2" cy="19.0" r="1.11" fill="#e6b400" opacity="0.49"/><circle cx="29.7" cy="21.7" r="1.14" fill="#e6b400" opacity="0.51"/><circle cx="26.2" cy="26.7" r="1.18" fill="#e6b400" opacity="0.53"/><circle cx="24.1" cy="30.4" r="1.21" fill="#e6b400" opacity="0.56"/><circle cx="23.7" cy="33.8" r="1.24" fill="#e6b400" opacity="0.59"/><circle cx="19.5" cy="30.1" r="1.27" fill="#e6b400" opacity="0.62"/><circle cx="15.4" cy="28.0" r="1.30" fill="#e6b400" opacity="0.64"/><circle cx="12.4" cy="26.6" r="1.33" fill="#e6b400" opacity="0.67"/><circle cx="7.8" cy="23.8" r="1.37" fill="#e6b400" opacity="0.70"/><circle cx="5.5" cy="20.8" r="1.40" fill="#e6b400" opacity="0.74"/><circle cx="5.4" cy="16.0" r="1.43" fill="#e6b400" opacity="0.77"/><circle cx="7.4" cy="13.2" r="1.46" fill="#e6b400" opacity="0.80"/><circle cx="12.9" cy="11.2" r="1.49" fill="#e6b400" opacity="0.83"/><circle cx="16.6" cy="12.4" r="1.52" fill="#e6b400" opacity="0.86"/><circle cx="19.2" cy="15.0" r="1.56" fill="#e6b400" opacity="0.90"/><circle cx="20.1" cy="11.5" r="1.59" fill="#e6b400" opacity="0.93"/><circle cx="23.6" cy="8.7" r="1.62" fill="#e6b400" opacity="0.97"/><circle cx="27.8" cy="8.7" r="2.7" fill="#e6b400"/></svg>Ginam Kim</a>
+      <ul>
+        <li><a href="index.html">About</a></li>
+        <li><a href="projects.html" aria-current="page">Projects</a></li>
+        <li><a href="cv.html">CV</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <h1><svg class="wm" viewBox="130 -1509 7344 1549" role="img" aria-label="PicoSim"><path d="M285 -564V-793H750Q837 -793 890.25 -852.3399999999999Q943.5 -911.68 943.5 -1008.0Q943.5 -1106.5 890.5282805429864 -1165.75Q837.5565610859728 -1225.0 750 -1225H285V-1454H743Q877.9205607476636 -1454.0 978.2102803738318 -1398.5Q1078.5 -1343.0 1134.25 -1243.0Q1190 -1143 1190 -1008Q1190 -874 1134.159836065574 -774.0Q1078.3196721311476 -674.0 977.9098360655738 -619.0Q877.5 -564.0 743 -564ZM170 0V-1454H409V0ZM1447.5 -1215.0V-1454.0H1686.5V-1215.0ZM1447.5 0.0V-1038.0H1686.5V0.0ZM2428 15Q2209.5 15.0 2089.25 -106.92461197339246Q1969.0 -228.84922394678492 1969 -451V-592Q1969.0 -812.1636771300448 2089.175131348511 -932.5818385650224Q2209.3502626970226 -1053.0 2428.2224168126095 -1053.0Q2553 -1053 2653.700787401575 -1010.0Q2754.4015748031497 -967.0 2814 -887L2652 -735Q2612.0 -777.5 2556.868852459016 -800.75Q2501.7377049180327 -824.0 2441 -824Q2330.1370967741937 -824.0 2269.0685483870966 -763.2380952380952Q2208.0 -702.4761904761905 2208 -592V-451Q2208.0 -337.5719844357977 2269.0685483870966 -275.78599221789887Q2330.1370967741937 -214.0 2441 -214Q2501.6858407079644 -214.0 2556.7699115044247 -239.0810810810811Q2611.853982300885 -264.1621621621622 2652 -310L2814 -148Q2754.521568627451 -70.0 2653.5107843137257 -27.5Q2552.5 15.0 2428 15ZM3457 15Q3248.233644859813 15.0 3133.6168224299063 -103.5Q3019 -222 3019 -437V-606Q3019 -819 3133.6168224299063 -936.0Q3248.233644859813 -1053.0 3457 -1053Q3665.766355140187 -1053.0 3780.3831775700937 -936.0Q3895 -819 3895 -606V-434Q3895 -220 3780.3831775700937 -102.5Q3665.766355140187 15.0 3457 15ZM3456.622356495468 -214.0Q3551.5 -214.0 3603.75 -271.80392156862746Q3656.0 -329.6078431372549 3656 -434V-606Q3656 -710 3603.75 -767.0Q3551.5 -824.0 3456.622356495468 -824.0Q3362.631419939577 -824.0 3310.3157099697883 -767.0Q3258 -710 3258 -606V-434Q3258.0 -329.6078431372549 3310.3157099697883 -271.80392156862746Q3362.631419939577 -214.0 3456.622356495468 -214.0Z" fill="#23231f"/><path d="M4602 15Q4497 15 4400.5 -5.5Q4304 -26 4219.75 -66.25Q4135.5 -106.5 4065 -165L4192 -356Q4275.5 -285.5 4380.5 -248.75Q4485.5 -212.0 4602 -212Q4748 -212 4828.5 -264.25Q4909.0 -316.5 4909 -411V-412Q4909 -485 4868.5 -523.75Q4828.0 -562.5 4762.0 -581.25Q4696 -600 4618.0 -612.5Q4534.5 -626.0 4449.25 -645.25Q4364.0 -664.5 4292.5 -706.0Q4221.0 -747.5 4177.5 -825.0Q4134.0 -902.5 4134 -1032V-1033Q4134 -1241 4271.5 -1355.0Q4409 -1469 4660 -1469Q4777.5 -1469.0 4894.5 -1430.5Q5011.5 -1392.0 5117 -1317L5001 -1120Q4917.5 -1180.5 4830.5 -1211.25Q4743.5 -1242.0 4660 -1242Q4522.5 -1242.0 4446.75 -1191.5Q4371 -1141 4371 -1049V-1048Q4371 -972 4415.5 -932.5Q4460 -893 4531.75 -874.0Q4603.5 -855.0 4686.0 -838.5Q4768.0 -822.5 4849.5 -799.5Q4931.0 -776.5 4998.25 -733.25Q5065.5 -690.0 5105.75 -614.5Q5146 -539 5146 -418V-416Q5146.0 -210.5 5003.5 -97.75Q4861 15 4602 15ZM5418.5 -1215.0V-1454.0H5657.5V-1215.0ZM5418.5 0.0V-1038.0H5657.5V0.0ZM7195 0V-614Q7195.0 -714.4347826086956 7145.009216589862 -769.2173913043478Q7095.018433179724 -824.0 7003 -824Q6916 -824 6868.75 -771.2252252252252Q6821.5 -718.4504504504505 6821.5 -622.0L6775.5 -842.0Q6825.092833876221 -943.5925925925926 6904.441368078176 -998.2962962962963Q6983.78990228013 -1053.0 7080 -1053Q7249 -1053 7341.5 -938.581560283688Q7434.0 -824.1631205673759 7434 -615V0ZM5970 0V-1038H6209V0ZM6582.5 0.0V-614.0Q6582.5 -714.4347826086956 6533.25 -769.2173913043478Q6484 -824 6393 -824Q6304.9617224880385 -824.0 6256.980861244019 -776.2475247524753Q6209.0 -728.4950495049505 6209 -642L6188 -857Q6234.5 -951.0 6307.5 -1002.0Q6380.5 -1053.0 6475.143835616438 -1053.0Q6640.267123287671 -1053.0 6730.8835616438355 -938.581560283688Q6821.5 -824.1631205673759 6821.5 -615.0V0.0Z" fill="#e6b400"/></svg></h1>
+    <p class="muted" style="margin-top:-6px">Vehicle dynamics simulator for Formula Student cars</p>
+    <p class="lead">
+      A real-time simulator I am building from the physics core up for Formula Student cars,
+      on the way from a design tool for one car to a simulator that calibrates itself from
+      real data and helps design the next vehicle.
+    </p>
+    <p>
+      <span class="tag">Unity 6 / C#</span><span class="tag">Python</span>
+      <span class="tag">~16k lines C#</span><span class="tag">~7k lines Python</span>
+      <span class="tag">Since 2025</span>
+    </p>
+
+    <!-- ===== Videos ===== -->
+    <h2>Demo</h2>
+    <figure style="margin:0">
+      <div class="video">
+        <video src="assets/videos/driving_demo.mp4" controls muted playsinline loop preload="metadata"></video>
+      </div>
+      <figcaption>Driving the car myself with a force-feedback steering wheel.</figcaption>
+    </figure>
+
+    <!-- ===== What it is ===== -->
+    <h2>What it does</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Physics core</h3>
+        <p>1 kHz physics loop. The rate was chosen from a convergence study: at 200 Hz, steady-state
+          lateral grip was under-predicted and transient wheelspin was suppressed.</p>
+      </div>
+      <div class="card">
+        <h3>Tires</h3>
+        <p>Pacejka Magic Formula 6.1 with coefficients taken directly from a measured <code>.tir</code> file:
+          load sensitivity and combined slip, kept inside the fitted slip range.</p>
+      </div>
+      <div class="card">
+        <h3>Powertrain</h3>
+        <p>Combustion engine with sequential gearbox, quickshifter and clutch slip, plus an electric
+          motor preset. Engine maps from analysis results or dynamometer measurements.</p>
+      </div>
+      <div class="card">
+        <h3>Chassis</h3>
+        <p>Suspension with camber change and anti-roll bars, Ackermann steering geometry,
+          aerodynamic downforce and drag.</p>
+      </div>
+      <div class="card">
+        <h3>Human in the loop</h3>
+        <p>Force-feedback steering wheel driven by tire aligning torque, so a driver can
+          feel the car before it is built.</p>
+      </div>
+      <div class="card">
+        <h3>Automated testing</h3>
+        <p>Headless batch harness with ~24 scenarios (acceleration, skidpad, endurance, …) and
+          parameter overrides from environment variables, so design variants run without touching the scene.</p>
+      </div>
+      <div class="card">
+        <h3>Engineering data</h3>
+        <p>100 Hz telemetry exported to labeled spreadsheets: engine-speed distribution, longitudinal/lateral
+          acceleration, gear occupancy, steering torque.</p>
+      </div>
+      <div class="card">
+        <h3 id="autonomy">Autonomy stack</h3>
+        <p>Python stack connected over TCP: LiDAR + camera (YOLO trained on synthetic data
+          rendered by the simulator), EKF-SLAM, racing-line optimization and lateral MPC. <a href="autonomy.html">PicoSim Autonomous</a></p>
+      </div>
+    </div>
+
+    <!-- ===== Comparison ===== -->
+    <h2>How it compares</h2>
+    <p class="muted">
+      Commercial vehicle simulators set the standard for model fidelity. This project does not claim
+      to match them today. Its value is in what a fully open, end-to-end tool makes possible.
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Tool type</th><th>Strength</th><th>Where it falls short for this goal</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Commercial vehicle dynamics<br><span class="muted small">CarSim, IPG CarMaker</span></td>
+            <td>Validated multibody models, K&amp;C tables, HIL support, industry standard.</td>
+            <td>Closed models and licensed seats; the model can be tuned but not rewritten. Self-calibration and
+              design loops have to be built around it.</td>
+          </tr>
+          <tr>
+            <td>Lap-time simulators<br><span class="muted small">quasi-steady-state</span></td>
+            <td>Very fast; good for early concept trade-offs.</td>
+            <td>No transient dynamics, no driver in the loop, no controller testing.</td>
+          </tr>
+          <tr>
+            <td>Racing games / driving sims</td>
+            <td>Convincing feel, good graphics, wheel support.</td>
+            <td>Not engineering tools: internals are not documented, parameters cannot be traced to sources,
+              little structured data output.</td>
+          </tr>
+          <tr>
+            <td>Autonomy simulators<br><span class="muted small">e.g. CARLA</span></td>
+            <td>Sensors, scenarios, open source.</td>
+            <td>Vehicle dynamics are not the focus; tire and powertrain models are simplified.</td>
+          </tr>
+          <tr>
+            <td><strong>This project</strong></td>
+            <td>Full source control from tire model to telemetry; one tool for driver-in-the-loop, autonomy and
+              batch design studies.</td>
+            <td>Not yet validated against real vehicle data; suspension kinematics simplified (see roadmap).</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>What makes it different</h3>
+    <ul>
+      <li><strong>Every number has a source.</strong> Physics constants come from measurements, standards or
+        literature, documented next to the code, with no hand-tuned "feel" factors. This is what makes calibration
+        against real data meaningful.</li>
+      <li><strong>Accuracy is checked, not assumed.</strong> Numerical settings such as the integration rate are
+        chosen from convergence tests run through the harness.</li>
+      <li><strong>One model, three uses.</strong> The same vehicle model serves a human driver, an autonomous
+        stack and headless design studies, so results stay consistent across them.</li>
+      <li><strong>Built for the design loop.</strong> Parameter overrides, batch runs and spreadsheet export
+        already let one design change go from idea to data without manual steps. This is the base for automatic calibration and
+        optimization.</li>
+      <li><strong>Fully open.</strong> No license limits on seats, runs or model changes: the model
+        can be extended exactly where the car needs it.</li>
+    </ul>
+
+    <!-- ===== Roadmap ===== -->
+    <h2 id="roadmap">Roadmap</h2>
+    <p class="muted">
+      Goal: a simulator that can be trusted for real vehicles, calibrates itself from real data, and uses
+      that model to design the vehicle.
+    </p>
+    <ol class="roadmap">
+      <li class="done">
+        <div class="phase">PHASE 1</div>
+        <h3>Foundation <span class="status done">done</span></h3>
+        <ul>
+          <li>Drivable car with 1 kHz physics chosen by convergence study and MF 6.1 tires from measured coefficients</li>
+          <li>Combustion and electric powertrains, aerodynamics, force-feedback steering</li>
+          <li>Batch test harness, 100 Hz telemetry with spreadsheet export</li>
+          <li>Single vehicle parameter dataset (JSON); anti-roll bars acting through tire loads</li>
+        </ul>
+      </li>
+      <li class="now">
+        <div class="phase">PHASE 2</div>
+        <h3>Vehicle model fidelity &amp; validation <span class="status now">in progress</span></h3>
+        <ul>
+          <li>Hardpoint-based K&amp;C solver: bump steer, roll centre, anti-dive/squat, bump stops, unsprung mass</li>
+          <li>Member loads as an output for structural design</li>
+          <li>Automated KPIs from standard manoeuvres (steady-state cornering, sine-with-dwell)</li>
+          <li>Comparison against real logs from <a href="telemetry.html">PicoSim Telemetry</a> and a commercial reference model</li>
+        </ul>
+      </li>
+      <li>
+        <div class="phase">PHASE 3</div>
+        <h3>Self-calibrating simulation <span class="status next">planned</span></h3>
+        <ul>
+          <li>Identify model parameters automatically from real driving and test data</li>
+          <li>Model improves as data accumulates, without forgetting what it already learned</li>
+          <li>Staged validation: software, hardware, then vehicle in the loop</li>
+        </ul>
+      </li>
+      <li>
+        <div class="phase">PHASE 4</div>
+        <h3>Simulation-based design <span class="status next">planned</span></h3>
+        <ul>
+          <li>Physics as a standalone library with a C API: fast headless runs from Python, FMU export</li>
+          <li>Optimize battery capacity, motor power, vehicle size and suspension kinematics on the calibrated model</li>
+          <li>Derive component requirements (boundary conditions) from target performance, with battery and thermal models</li>
+        </ul>
+      </li>
+      <li>
+        <div class="phase">PHASE 5</div>
+        <h3>Beyond the track <span class="status next">planned</span></h3>
+        <ul>
+          <li>Road scenarios and traffic for real-road vehicles</li>
+        </ul>
+      </li>
+    </ol>
+  </main>
+
+  <footer>© Ginam Kim · Last updated 2026-11</footer>
+</body>
+</html>

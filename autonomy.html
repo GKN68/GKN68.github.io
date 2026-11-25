@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PicoSim Autonomous — Ginam Kim</title>
+  <meta name="description" content="Autonomous driving stack for Formula Student Driverless, developed and tested in the PicoSim simulator.">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html"><svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="18.6" fill="#fffdf8" stroke="#d6cdb8" stroke-width="1.4"/><path d="M35.4 20.0L38.2 20.0" stroke="#b9b2a2" stroke-width="1.2" stroke-linecap="round"/><path d="M20.0 35.4L20.0 38.2" stroke="#b9b2a2" stroke-width="1.2" stroke-linecap="round"/><path d="M4.6 20.0L1.8 20.0" stroke="#b9b2a2" stroke-width="1.2" stroke-linecap="round"/><path d="M20.0 4.6L20.0 1.8" stroke="#b9b2a2" stroke-width="1.2" stroke-linecap="round"/><circle cx="20" cy="20" r="10" stroke="#e6dfcf" stroke-width="1"/><path d="M6 20h11M23 20h11M20 6v11M20 23v11" stroke="#e6dfcf" stroke-width="0.9"/><circle cx="32.3" cy="14.0" r="1.08" fill="#e6b400" opacity="0.47"/><circle cx="31.2" cy="19.0" r="1.11" fill="#e6b400" opacity="0.49"/><circle cx="29.7" cy="21.7" r="1.14" fill="#e6b400" opacity="0.51"/><circle cx="26.2" cy="26.7" r="1.18" fill="#e6b400" opacity="0.53"/><circle cx="24.1" cy="30.4" r="1.21" fill="#e6b400" opacity="0.56"/><circle cx="23.7" cy="33.8" r="1.24" fill="#e6b400" opacity="0.59"/><circle cx="19.5" cy="30.1" r="1.27" fill="#e6b400" opacity="0.62"/><circle cx="15.4" cy="28.0" r="1.30" fill="#e6b400" opacity="0.64"/><circle cx="12.4" cy="26.6" r="1.33" fill="#e6b400" opacity="0.67"/><circle cx="7.8" cy="23.8" r="1.37" fill="#e6b400" opacity="0.70"/><circle cx="5.5" cy="20.8" r="1.40" fill="#e6b400" opacity="0.74"/><circle cx="5.4" cy="16.0" r="1.43" fill="#e6b400" opacity="0.77"/><circle cx="7.4" cy="13.2" r="1.46" fill="#e6b400" opacity="0.80"/><circle cx="12.9" cy="11.2" r="1.49" fill="#e6b400" opacity="0.83"/><circle cx="16.6" cy="12.4" r="1.52" fill="#e6b400" opacity="0.86"/><circle cx="19.2" cy="15.0" r="1.56" fill="#e6b400" opacity="0.90"/><circle cx="20.1" cy="11.5" r="1.59" fill="#e6b400" opacity="0.93"/><circle cx="23.6" cy="8.7" r="1.62" fill="#e6b400" opacity="0.97"/><circle cx="27.8" cy="8.7" r="2.7" fill="#e6b400"/></svg>Ginam Kim</a>
+      <ul>
+        <li><a href="index.html">About</a></li>
+        <li><a href="projects.html" aria-current="page">Projects</a></li>
+        <li><a href="cv.html">CV</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <p class="small"><a href="projects.html">← Projects</a></p>
+    <h1 class="h1-small-wm"><svg class="wm" viewBox="130 -1509 7344 1549" role="img" aria-label="PicoSim"><path d="M285 -564V-793H750Q837 -793 890.25 -852.3399999999999Q943.5 -911.68 943.5 -1008.0Q943.5 -1106.5 890.5282805429864 -1165.75Q837.5565610859728 -1225.0 750 -1225H285V-1454H743Q877.9205607476636 -1454.0 978.2102803738318 -1398.5Q1078.5 -1343.0 1134.25 -1243.0Q1190 -1143 1190 -1008Q1190 -874 1134.159836065574 -774.0Q1078.3196721311476 -674.0 977.9098360655738 -619.0Q877.5 -564.0 743 -564ZM170 0V-1454H409V0ZM1447.5 -1215.0V-1454.0H1686.5V-1215.0ZM1447.5 0.0V-1038.0H1686.5V0.0ZM2428 15Q2209.5 15.0 2089.25 -106.92461197339246Q1969.0 -228.84922394678492 1969 -451V-592Q1969.0 -812.1636771300448 2089.175131348511 -932.5818385650224Q2209.3502626970226 -1053.0 2428.2224168126095 -1053.0Q2553 -1053 2653.700787401575 -1010.0Q2754.4015748031497 -967.0 2814 -887L2652 -735Q2612.0 -777.5 2556.868852459016 -800.75Q2501.7377049180327 -824.0 2441 -824Q2330.1370967741937 -824.0 2269.0685483870966 -763.2380952380952Q2208.0 -702.4761904761905 2208 -592V-451Q2208.0 -337.5719844357977 2269.0685483870966 -275.78599221789887Q2330.1370967741937 -214.0 2441 -214Q2501.6858407079644 -214.0 2556.7699115044247 -239.0810810810811Q2611.853982300885 -264.1621621621622 2652 -310L2814 -148Q2754.521568627451 -70.0 2653.5107843137257 -27.5Q2552.5 15.0 2428 15ZM3457 15Q3248.233644859813 15.0 3133.6168224299063 -103.5Q3019 -222 3019 -437V-606Q3019 -819 3133.6168224299063 -936.0Q3248.233644859813 -1053.0 3457 -1053Q3665.766355140187 -1053.0 3780.3831775700937 -936.0Q3895 -819 3895 -606V-434Q3895 -220 3780.3831775700937 -102.5Q3665.766355140187 15.0 3457 15ZM3456.622356495468 -214.0Q3551.5 -214.0 3603.75 -271.80392156862746Q3656.0 -329.6078431372549 3656 -434V-606Q3656 -710 3603.75 -767.0Q3551.5 -824.0 3456.622356495468 -824.0Q3362.631419939577 -824.0 3310.3157099697883 -767.0Q3258 -710 3258 -606V-434Q3258.0 -329.6078431372549 3310.3157099697883 -271.80392156862746Q3362.631419939577 -214.0 3456.622356495468 -214.0Z" fill="#23231f"/><path d="M4602 15Q4497 15 4400.5 -5.5Q4304 -26 4219.75 -66.25Q4135.5 -106.5 4065 -165L4192 -356Q4275.5 -285.5 4380.5 -248.75Q4485.5 -212.0 4602 -212Q4748 -212 4828.5 -264.25Q4909.0 -316.5 4909 -411V-412Q4909 -485 4868.5 -523.75Q4828.0 -562.5 4762.0 -581.25Q4696 -600 4618.0 -612.5Q4534.5 -626.0 4449.25 -645.25Q4364.0 -664.5 4292.5 -706.0Q4221.0 -747.5 4177.5 -825.0Q4134.0 -902.5 4134 -1032V-1033Q4134 -1241 4271.5 -1355.0Q4409 -1469 4660 -1469Q4777.5 -1469.0 4894.5 -1430.5Q5011.5 -1392.0 5117 -1317L5001 -1120Q4917.5 -1180.5 4830.5 -1211.25Q4743.5 -1242.0 4660 -1242Q4522.5 -1242.0 4446.75 -1191.5Q4371 -1141 4371 -1049V-1048Q4371 -972 4415.5 -932.5Q4460 -893 4531.75 -874.0Q4603.5 -855.0 4686.0 -838.5Q4768.0 -822.5 4849.5 -799.5Q4931.0 -776.5 4998.25 -733.25Q5065.5 -690.0 5105.75 -614.5Q5146 -539 5146 -418V-416Q5146.0 -210.5 5003.5 -97.75Q4861 15 4602 15ZM5418.5 -1215.0V-1454.0H5657.5V-1215.0ZM5418.5 0.0V-1038.0H5657.5V0.0ZM7195 0V-614Q7195.0 -714.4347826086956 7145.009216589862 -769.2173913043478Q7095.018433179724 -824.0 7003 -824Q6916 -824 6868.75 -771.2252252252252Q6821.5 -718.4504504504505 6821.5 -622.0L6775.5 -842.0Q6825.092833876221 -943.5925925925926 6904.441368078176 -998.2962962962963Q6983.78990228013 -1053.0 7080 -1053Q7249 -1053 7341.5 -938.581560283688Q7434.0 -824.1631205673759 7434 -615V0ZM5970 0V-1038H6209V0ZM6582.5 0.0V-614.0Q6582.5 -714.4347826086956 6533.25 -769.2173913043478Q6484 -824 6393 -824Q6304.9617224880385 -824.0 6256.980861244019 -776.2475247524753Q6209.0 -728.4950495049505 6209 -642L6188 -857Q6234.5 -951.0 6307.5 -1002.0Q6380.5 -1053.0 6475.143835616438 -1053.0Q6640.267123287671 -1053.0 6730.8835616438355 -938.581560283688Q6821.5 -824.1631205673759 6821.5 -615.0V0.0Z" fill="#e6b400"/></svg> Autonomous</h1>
+    <p class="muted" style="margin-top:-6px">Driverless software for Formula Student, built and tested in PicoSim</p>
+    <p class="lead">
+      A full autonomous racing stack, from raw LiDAR and camera data to steering and pedals, run against
+      the PicoSim vehicle model so it can be developed, broken and fixed long before it reaches a real car.
+    </p>
+    <p>
+      <span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">YOLO</span><span class="tag">EKF-SLAM</span>
+      <span class="tag">MPC</span><span class="tag">Unity</span><span class="tag">Since 2026</span>
+    </p>
+
+    <h2>Demo</h2>
+    <figure style="margin:0">
+      <div class="video">
+        <video src="assets/videos/autonomy_demo.mp4" controls muted playsinline loop preload="metadata"></video>
+      </div>
+      <figcaption>The car driving itself on the Formula Student Korea track. It finds the cones with camera and LiDAR,
+        builds a map, plans a path and steers along it. The panels show what it sees and does.</figcaption>
+    </figure>
+
+    <h2>Pipeline</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Perception</h3>
+        <p>LiDAR point-cloud clustering with cone colour from return intensity, fused with a YOLO detector on the camera.
+          The detector is trained on images rendered by PicoSim and fine-tuned on the public FSOCO dataset.</p>
+      </div>
+      <div class="card">
+        <h3>State estimation &amp; SLAM</h3>
+        <p>IMU and wheel-speed EKF for velocity, and EKF-SLAM for the cone map and the pose of the car, including gyro bias.</p>
+      </div>
+      <div class="card">
+        <h3>Planning</h3>
+        <p>Delaunay triangulation of the cone map with triangle filters and a beam search along the track centre.
+          Once the track is known, a minimum-curvature racing line between the cone boundaries.</p>
+      </div>
+      <div class="card">
+        <h3>Control</h3>
+        <p>Lateral MPC with understeer compensation and actuator-delay prediction, and a speed profile from the measured
+          G-G-V envelope of the car. A slip-angle based spin guard backs it up.</p>
+      </div>
+      <div class="card">
+        <h3>Missions</h3>
+        <p>Acceleration, skidpad, autocross, trackdrive and EBS test, with the autonomous system counting its own laps
+          and stopping after the finish line as the rules require.</p>
+      </div>
+      <div class="card">
+        <h3>Simulation side</h3>
+        <p>Raw LiDAR models for several sensors, camera rendering, IMU and wheel-speed noise, actuator lag and EBS
+          reaction, rule-compliant random tracks, and a regression suite that scores every run against the competition rules.</p>
+      </div>
+    </div>
+
+    <h2>How it compares</h2>
+    <p class="muted">
+      Leading Formula Student teams publish much of their work, and their papers shaped many choices here. The table shows
+      where this project differs. It is a simulation-only stack; the teams below race real cars.
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Reference</th><th>What it is</th><th>Where PicoSim Autonomous differs</th></tr></thead>
+        <tbody>
+          <tr><td>AMZ Racing (ETH Zurich)<br><span class="muted small">FSSIM</span></td>
+            <td>Open-source simulator used for continuous testing of their driverless software. Its sensor model gives cone
+              positions and colours with noise, not raw sensor data.</td>
+            <td>Generates raw LiDAR point clouds and camera images, so perception is tested too. The cone-level noise model
+              follows FSSIM for comparability.</td></tr>
+          <tr><td>KA-RaceIng (KIT)<br><span class="muted small">PacSim</span></td>
+            <td>Cone-level simulator; their published stack runs online minimum-curvature planning on a partly seen track
+              with long-range LiDAR.</td>
+            <td>Same planning idea, on a vehicle model with Magic Formula tires and load transfer.</td></tr>
+          <tr><td>FSDS<br><span class="muted small">Formula Student Driverless Simulator</span></td>
+            <td>Open simulator built on Unreal Engine and AirSim with a ROS bridge, used for virtual competitions.</td>
+            <td>Vehicle dynamics are the core here rather than a generic car model, and missions are judged and scored with
+              the competition rules after every run.</td></tr>
+          <tr><td>Commercial simulators</td>
+            <td>Validated vehicle and sensor models with HIL support, under paid licenses.</td>
+            <td>Free to change at every level and built around Formula Student missions. Not yet validated against a real car.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Strengths</h3>
+    <ul>
+      <li><strong>One vehicle model for everything.</strong> The autonomy stack drives the same 1 kHz model with Magic Formula
+        tires that a human driver feels through the force-feedback wheel.</li>
+      <li><strong>Perception is in the loop.</strong> Raw LiDAR and camera data, not ready-made cone lists, so detection errors
+        reach the planner the way they would on a car.</li>
+      <li><strong>Real-car effects on purpose.</strong> Sensor noise, IMU bias, wheel-speed errors, steering lag, command delay
+        and EBS reaction time can all be switched on to see where the stack breaks.</li>
+      <li><strong>Rules built in.</strong> Every mission is judged like at competition, and a regression suite reruns them
+        after each change.</li>
+    </ul>
+
+    <h3>What still needs work</h3>
+    <ul>
+      <li><strong>Exploration lap speed.</strong> The first lap on an unknown track is still far slower than top teams and is
+        the largest gap in points.</li>
+      <li><strong>Sim-to-real for the camera.</strong> A detector trained only on rendered images does poorly on real photos;
+        fine-tuning on FSOCO helps, but more real data and domain randomisation are needed.</li>
+      <li><strong>High-channel LiDAR.</strong> Seeing many more cones currently confuses the planner; cone selection should
+        follow the track boundaries rather than a radius.</li>
+      <li><strong>Mapping.</strong> Top teams use graph-based SLAM; this stack uses EKF-SLAM and still keeps some false cones.</li>
+      <li><strong>Latency.</strong> Above about 100 ms of command delay the stack stays safe only by slowing down.</li>
+      <li><strong>Toward a real car.</strong> LiDAR reflectivity and incidence-angle dropout, camera distortion and exposure,
+        ROS 2 integration and hardware-in-the-loop are next.</li>
+    </ul>
+
+    <h2 id="roadmap">Roadmap</h2>
+    <p class="muted">
+      Goal: a driverless stack that is competitive in simulation first, then moves to the real car with as few surprises as possible.
+    </p>
+    <ol class="roadmap">
+      <li class="done">
+        <div class="phase">PHASE 1</div>
+        <h3>Foundation <span class="status done">done</span></h3>
+        <ul>
+          <li>Raw LiDAR and camera simulation; cone perception with YOLO trained on rendered images</li>
+          <li>EKF-SLAM, Delaunay-based path planning, minimum-curvature racing line, lateral MPC</li>
+          <li>All competition missions with the autonomous system counting its own laps</li>
+          <li>Regression suite that scores every run with the competition rules</li>
+        </ul>
+      </li>
+      <li class="now">
+        <div class="phase">PHASE 2</div>
+        <h3>Competitive driving <span class="status now">in progress</span></h3>
+        <ul>
+          <li>Faster exploration lap on an unknown track</li>
+          <li>Cone selection that follows the track boundaries, so high-channel LiDAR helps instead of hurting</li>
+          <li>Graph-based SLAM and fewer false cones in the map</li>
+          <li>Stable at full speed with realistic command latency</li>
+        </ul>
+      </li>
+      <li>
+        <div class="phase">PHASE 3</div>
+        <h3>Real-sensor readiness <span class="status next">planned</span></h3>
+        <ul>
+          <li>Camera detector trained on real images (FSOCO) with domain randomisation of the rendered data</li>
+          <li>LiDAR reflectivity and incidence-angle dropout; camera distortion and exposure</li>
+          <li>Sensor calibration workflow inside the simulator</li>
+        </ul>
+      </li>
+      <li>
+        <div class="phase">PHASE 4</div>
+        <h3>ROS 2 &amp; hardware in the loop <span class="status next">planned</span></h3>
+        <ul>
+          <li>Stack ported to ROS 2 with the simulator as a drop-in sensor source</li>
+          <li>Software- and hardware-in-the-loop runs on the target computer, CAN emulation</li>
+        </ul>
+      </li>
+      <li>
+        <div class="phase">PHASE 5</div>
+        <h3>On the car <span class="status next">planned</span></h3>
+        <ul>
+          <li>Sensor mounting and calibration on the real vehicle</li>
+          <li>Staged vehicle tests from low-speed runs to full missions, compared against the simulator</li>
+        </ul>
+      </li>
+    </ol>
+  </main>
+
+  <footer>© Ginam Kim · Last updated 2026-11</footer>
+</body>
+</html>

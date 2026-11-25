@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PicoSim Telemetry — Ginam Kim</title>
+  <meta name="description" content="On-car data logging, wireless telemetry and driver dash for a Formula Student car, built to feed real data back into the simulator.">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html"><svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="18.6" fill="#fffdf8" stroke="#d6cdb8" stroke-width="1.4"/><path d="M35.4 20.0L38.2 20.0" stroke="#b9b2a2" stroke-width="1.2" stroke-linecap="round"/><path d="M20.0 35.4L20.0 38.2" stroke="#b9b2a2" stroke-width="1.2" stroke-linecap="round"/><path d="M4.6 20.0L1.8 20.0" stroke="#b9b2a2" stroke-width="1.2" stroke-linecap="round"/><path d="M20.0 4.6L20.0 1.8" stroke="#b9b2a2" stroke-width="1.2" stroke-linecap="round"/><circle cx="20" cy="20" r="10" stroke="#e6dfcf" stroke-width="1"/><path d="M6 20h11M23 20h11M20 6v11M20 23v11" stroke="#e6dfcf" stroke-width="0.9"/><circle cx="32.3" cy="14.0" r="1.08" fill="#e6b400" opacity="0.47"/><circle cx="31.2" cy="19.0" r="1.11" fill="#e6b400" opacity="0.49"/><circle cx="29.7" cy="21.7" r="1.14" fill="#e6b400" opacity="0.51"/><circle cx="26.2" cy="26.7" r="1.18" fill="#e6b400" opacity="0.53"/><circle cx="24.1" cy="30.4" r="1.21" fill="#e6b400" opacity="0.56"/><circle cx="23.7" cy="33.8" r="1.24" fill="#e6b400" opacity="0.59"/><circle cx="19.5" cy="30.1" r="1.27" fill="#e6b400" opacity="0.62"/><circle cx="15.4" cy="28.0" r="1.30" fill="#e6b400" opacity="0.64"/><circle cx="12.4" cy="26.6" r="1.33" fill="#e6b400" opacity="0.67"/><circle cx="7.8" cy="23.8" r="1.37" fill="#e6b400" opacity="0.70"/><circle cx="5.5" cy="20.8" r="1.40" fill="#e6b400" opacity="0.74"/><circle cx="5.4" cy="16.0" r="1.43" fill="#e6b400" opacity="0.77"/><circle cx="7.4" cy="13.2" r="1.46" fill="#e6b400" opacity="0.80"/><circle cx="12.9" cy="11.2" r="1.49" fill="#e6b400" opacity="0.83"/><circle cx="16.6" cy="12.4" r="1.52" fill="#e6b400" opacity="0.86"/><circle cx="19.2" cy="15.0" r="1.56" fill="#e6b400" opacity="0.90"/><circle cx="20.1" cy="11.5" r="1.59" fill="#e6b400" opacity="0.93"/><circle cx="23.6" cy="8.7" r="1.62" fill="#e6b400" opacity="0.97"/><circle cx="27.8" cy="8.7" r="2.7" fill="#e6b400"/></svg>Ginam Kim</a>
+      <ul>
+        <li><a href="index.html">About</a></li>
+        <li><a href="projects.html" aria-current="page">Projects</a></li>
+        <li><a href="cv.html">CV</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <p class="small"><a href="projects.html">← Projects</a></p>
+    <h1 class="h1-small-wm"><svg class="wm" viewBox="130 -1509 7344 1549" role="img" aria-label="PicoSim"><path d="M285 -564V-793H750Q837 -793 890.25 -852.3399999999999Q943.5 -911.68 943.5 -1008.0Q943.5 -1106.5 890.5282805429864 -1165.75Q837.5565610859728 -1225.0 750 -1225H285V-1454H743Q877.9205607476636 -1454.0 978.2102803738318 -1398.5Q1078.5 -1343.0 1134.25 -1243.0Q1190 -1143 1190 -1008Q1190 -874 1134.159836065574 -774.0Q1078.3196721311476 -674.0 977.9098360655738 -619.0Q877.5 -564.0 743 -564ZM170 0V-1454H409V0ZM1447.5 -1215.0V-1454.0H1686.5V-1215.0ZM1447.5 0.0V-1038.0H1686.5V0.0ZM2428 15Q2209.5 15.0 2089.25 -106.92461197339246Q1969.0 -228.84922394678492 1969 -451V-592Q1969.0 -812.1636771300448 2089.175131348511 -932.5818385650224Q2209.3502626970226 -1053.0 2428.2224168126095 -1053.0Q2553 -1053 2653.700787401575 -1010.0Q2754.4015748031497 -967.0 2814 -887L2652 -735Q2612.0 -777.5 2556.868852459016 -800.75Q2501.7377049180327 -824.0 2441 -824Q2330.1370967741937 -824.0 2269.0685483870966 -763.2380952380952Q2208.0 -702.4761904761905 2208 -592V-451Q2208.0 -337.5719844357977 2269.0685483870966 -275.78599221789887Q2330.1370967741937 -214.0 2441 -214Q2501.6858407079644 -214.0 2556.7699115044247 -239.0810810810811Q2611.853982300885 -264.1621621621622 2652 -310L2814 -148Q2754.521568627451 -70.0 2653.5107843137257 -27.5Q2552.5 15.0 2428 15ZM3457 15Q3248.233644859813 15.0 3133.6168224299063 -103.5Q3019 -222 3019 -437V-606Q3019 -819 3133.6168224299063 -936.0Q3248.233644859813 -1053.0 3457 -1053Q3665.766355140187 -1053.0 3780.3831775700937 -936.0Q3895 -819 3895 -606V-434Q3895 -220 3780.3831775700937 -102.5Q3665.766355140187 15.0 3457 15ZM3456.622356495468 -214.0Q3551.5 -214.0 3603.75 -271.80392156862746Q3656.0 -329.6078431372549 3656 -434V-606Q3656 -710 3603.75 -767.0Q3551.5 -824.0 3456.622356495468 -824.0Q3362.631419939577 -824.0 3310.3157099697883 -767.0Q3258 -710 3258 -606V-434Q3258.0 -329.6078431372549 3310.3157099697883 -271.80392156862746Q3362.631419939577 -214.0 3456.622356495468 -214.0Z" fill="#23231f"/><path d="M4602 15Q4497 15 4400.5 -5.5Q4304 -26 4219.75 -66.25Q4135.5 -106.5 4065 -165L4192 -356Q4275.5 -285.5 4380.5 -248.75Q4485.5 -212.0 4602 -212Q4748 -212 4828.5 -264.25Q4909.0 -316.5 4909 -411V-412Q4909 -485 4868.5 -523.75Q4828.0 -562.5 4762.0 -581.25Q4696 -600 4618.0 -612.5Q4534.5 -626.0 4449.25 -645.25Q4364.0 -664.5 4292.5 -706.0Q4221.0 -747.5 4177.5 -825.0Q4134.0 -902.5 4134 -1032V-1033Q4134 -1241 4271.5 -1355.0Q4409 -1469 4660 -1469Q4777.5 -1469.0 4894.5 -1430.5Q5011.5 -1392.0 5117 -1317L5001 -1120Q4917.5 -1180.5 4830.5 -1211.25Q4743.5 -1242.0 4660 -1242Q4522.5 -1242.0 4446.75 -1191.5Q4371 -1141 4371 -1049V-1048Q4371 -972 4415.5 -932.5Q4460 -893 4531.75 -874.0Q4603.5 -855.0 4686.0 -838.5Q4768.0 -822.5 4849.5 -799.5Q4931.0 -776.5 4998.25 -733.25Q5065.5 -690.0 5105.75 -614.5Q5146 -539 5146 -418V-416Q5146.0 -210.5 5003.5 -97.75Q4861 15 4602 15ZM5418.5 -1215.0V-1454.0H5657.5V-1215.0ZM5418.5 0.0V-1038.0H5657.5V0.0ZM7195 0V-614Q7195.0 -714.4347826086956 7145.009216589862 -769.2173913043478Q7095.018433179724 -824.0 7003 -824Q6916 -824 6868.75 -771.2252252252252Q6821.5 -718.4504504504505 6821.5 -622.0L6775.5 -842.0Q6825.092833876221 -943.5925925925926 6904.441368078176 -998.2962962962963Q6983.78990228013 -1053.0 7080 -1053Q7249 -1053 7341.5 -938.581560283688Q7434.0 -824.1631205673759 7434 -615V0ZM5970 0V-1038H6209V0ZM6582.5 0.0V-614.0Q6582.5 -714.4347826086956 6533.25 -769.2173913043478Q6484 -824 6393 -824Q6304.9617224880385 -824.0 6256.980861244019 -776.2475247524753Q6209.0 -728.4950495049505 6209 -642L6188 -857Q6234.5 -951.0 6307.5 -1002.0Q6380.5 -1053.0 6475.143835616438 -1053.0Q6640.267123287671 -1053.0 6730.8835616438355 -938.581560283688Q6821.5 -824.1631205673759 6821.5 -615.0V0.0Z" fill="#e6b400"/></svg> Telemetry</h1>
+    <p class="muted" style="margin-top:-6px">On-car data logging, driver dash and analysis software</p>
+    <p class="lead">
+      The real-vehicle half of PicoSim: a data acquisition system that measures
+      the same quantities the simulator predicts, so the model can be checked and calibrated against the car.
+    </p>
+    <p>
+      <span class="tag">ESP32</span><span class="tag">Arduino</span>
+      <span class="tag">CAN</span><span class="tag">Web Serial</span><span class="tag">Since 2025</span>
+    </p>
+
+    <h2>Why it exists</h2>
+    <p>
+      A simulator is only as good as the data used to check it. Commercial data loggers are expensive and
+      closed, and they do not log in the format the simulator writes. This system is designed from the start
+      so that <strong>a real run and a simulated run produce directly comparable data</strong>: the first
+      step toward a <a href="simulator.html#roadmap">self-calibrating PicoSim</a>.
+    </p>
+
+    <h2>System</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Data unit (on car)</h3>
+        <p>IMU, GPS, suspension position (4 ch), wheel speed (4 ch), engine data from the ECU over CAN,
+          SD-card logging, and a wireless link to the pits.</p>
+      </div>
+      <div class="card">
+        <h3>Driver dash</h3>
+        <p>5″ sunlight-readable display (800×480, 1000 nit), 16-LED shift light and warning lights,
+          driven from ECU data over CAN.</p>
+      </div>
+      <div class="card">
+        <h3>Pit receiver &amp; analysis software</h3>
+        <p>Wireless receiver on USB, read by a browser-based telemetry and analysis tool. No install, runs offline
+          on the pit laptop.</p>
+      </div>
+    </div>
+
+    <h2 id="software">Telemetry &amp; analysis software</h2>
+    <p>
+      One tool for both sides of the project: it shows the car live in the pits, and it opens logs from the car
+      and from the simulator in the same way, so they can be compared directly.
+    </p>
+    <p><a class="btn" href="app/telemetry.html?demo=1" target="_blank" rel="noopener">Open the app with demo data</a>
+      <a class="btn" href="app/telemetry.html" target="_blank" rel="noopener">Open the app</a>
+      <a class="btn" href="https://github.com/GKN68/picosim-telemetry">Source on GitHub</a></p>
+    <p class="small muted">Runs in the browser. Connecting the pit receiver needs Chrome or Edge. Demo data is synthetic, not vehicle data.
+      Any CSV log can be opened from the session bar or dropped onto the page.</p>
+    <figure class="shot">
+      <img src="assets/img/telemetry-overview.png" alt="Overview page: G-G diagram, session peaks and live metric graphs" loading="lazy">
+      <figcaption>Overview: live G-G diagram with the session grip limit, peak and 95th-percentile values, and a graph for
+        every channel. Shown with demo data.</figcaption>
+    </figure>
+
+    <h3>Predefined graph library</h3>
+    <p>
+      Instead of building plots by hand after every run, the tool draws a fixed set of engineering graphs
+      the moment a log is opened. Graphs that need a channel the log does not have are marked, so the same pages
+      fill in automatically as sensors are added to the car.
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Page</th><th>Graphs</th><th>Examples</th></tr></thead>
+        <tbody>
+          <tr><td>Vehicle Dynamics</td><td>14</td><td>G-G envelope, lateral grip vs speed, acceleration and braking limits vs speed, understeer gradient, yaw rate gain, speed and G maps</td></tr>
+          <tr><td>Powertrain</td><td>11</td><td>Time in RPM band, gear usage, upshift RPM, engine vs vehicle speed, pedal distributions, drive torque</td></tr>
+          <tr><td>Tires</td><td>11</td><td>Normal load per corner, slip angle vs lateral force per axle, slip ratio vs drive force, camber, lateral and longitudinal load transfer</td></tr>
+          <tr><td>Suspension &amp; Aero</td><td>8</td><td>Travel and its distribution, roll and pitch gradients, spring forces, downforce and drag vs speed</td></tr>
+          <tr><td>Steering &amp; Driver</td><td>8</td><td>Steering torque and aligning torque vs lateral G, steering distribution, share of full throttle, coasting, braking and overlap</td></tr>
+          <tr><td>Tools</td><td>—</td><td>Explorer (any channel against time or any other channel) and per-channel statistics</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid" style="margin-top:16px">
+      <figure class="shot">
+        <img src="assets/img/telemetry-vehicle-dynamics.png" alt="Vehicle Dynamics page comparing two simulated sessions" loading="lazy">
+        <figcaption>Vehicle Dynamics: two simulated endurance runs overlaid (red and white), here comparing two engine models.</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="assets/img/telemetry-tires.png" alt="Tires page from a simulated endurance run" loading="lazy">
+        <figcaption>Tires: per-corner loads, slip curves and load transfer from a simulator log.</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="assets/img/telemetry-powertrain.png" alt="Powertrain page comparing two simulated sessions" loading="lazy">
+        <figcaption>Powertrain: RPM band, gear usage and shift points for the same two runs.</figcaption>
+      </figure>
+    </div>
+
+    <h3>Comparing real and simulated runs</h3>
+    <ul>
+      <li><strong>Two sessions at once.</strong> Any two logs (real vs simulated, setup A vs setup B) are drawn on every graph together.</li>
+      <li><strong>Reads both formats.</strong> The car logger's CSV and the simulator's telemetry export open the same way; channel names are matched automatically.</li>
+      <li><strong>Derived channels.</strong> Axle forces, load transfer, roll and pitch, yaw rate gain and driver input shares are computed on load.</li>
+    </ul>
+
+    <h2>How it connects to the simulator</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Measured on the car</th><th>Simulator counterpart</th><th>Used for</th></tr></thead>
+        <tbody>
+          <tr><td>Accelerations, yaw rate (IMU)</td><td>Chassis accelerations, yaw rate</td><td>G-G envelope, handling balance, tire grip</td></tr>
+          <tr><td>Wheel speeds</td><td>Wheel angular velocity</td><td>Slip ratio, traction, braking</td></tr>
+          <tr><td>Suspension position</td><td>Suspension travel</td><td>Load transfer, roll and pitch, spring/damper and anti-roll bar settings</td></tr>
+          <tr><td>Engine data (CAN)</td><td>Powertrain state</td><td>Engine map, gear usage, shift points</td></tr>
+          <tr><td>GPS position, speed</td><td>Vehicle trajectory</td><td>Same-track, same-line comparison; lap reconstruction</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul>
+      <li><strong>Same channels, same format.</strong> Logs are being shaped to match the simulator's telemetry export,
+        so a real lap and a simulated lap can be overlaid without manual conversion.</li>
+      <li><strong>Closing the loop.</strong> Differences between the two become the input for parameter identification
+        (roadmap phases 3–4): tires, mass properties, powertrain.</li>
+      <li><strong>Test the software before the car.</strong> The simulator can generate the same data stream, so the
+        dashboard and analysis tools can be developed and checked without the car running.</li>
+    </ul>
+
+    <h2>Status</h2>
+    <ol class="roadmap">
+      <li class="done">
+        <h3>Working <span class="status done">done</span></h3>
+        <ul>
+          <li>IMU reading and wireless transmitter on the data unit</li>
+          <li>16-LED shift light driven through a PWM driver</li>
+          <li>Telemetry and analysis software: live overview, 52 predefined graphs, real-vs-simulated comparison</li>
+        </ul>
+      </li>
+      <li class="now">
+        <h3>In progress <span class="status now">in progress</span></h3>
+        <ul>
+          <li>End-to-end wireless link to the pit dashboard</li>
+          <li>Dash display bring-up; GPS at 10 Hz</li>
+        </ul>
+      </li>
+      <li>
+        <h3>Next <span class="status next">planned</span></h3>
+        <ul>
+          <li>ECU data over CAN to dash and logger</li>
+          <li>Suspension position and wheel speed channels, SD logging</li>
+          <li>Log format aligned with the simulator; first real-vs-simulated comparison</li>
+        </ul>
+      </li>
+    </ol>
+  </main>
+
+  <footer>© Ginam Kim · Last updated 2026-11</footer>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CV — Ginam Kim</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html"><svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="18.6" fill="#fffdf8" stroke="#d6cdb8" stroke-width="1.4"/><path d="M35.4 20.0L38.2 20.0" stroke="#b9b2a2" stroke-width="1.2" stroke-linecap="round"/><path d="M20.0 35.4L20.0 38.2" stroke="#b9b2a2" stroke-width="1.2" stroke-linecap="round"/><path d="M4.6 20.0L1.8 20.0" stroke="#b9b2a2" stroke-width="1.2" stroke-linecap="round"/><path d="M20.0 4.6L20.0 1.8" stroke="#b9b2a2" stroke-width="1.2" stroke-linecap="round"/><circle cx="20" cy="20" r="10" stroke="#e6dfcf" stroke-width="1"/><path d="M6 20h11M23 20h11M20 6v11M20 23v11" stroke="#e6dfcf" stroke-width="0.9"/><circle cx="32.3" cy="14.0" r="1.08" fill="#e6b400" opacity="0.47"/><circle cx="31.2" cy="19.0" r="1.11" fill="#e6b400" opacity="0.49"/><circle cx="29.7" cy="21.7" r="1.14" fill="#e6b400" opacity="0.51"/><circle cx="26.2" cy="26.7" r="1.18" fill="#e6b400" opacity="0.53"/><circle cx="24.1" cy="30.4" r="1.21" fill="#e6b400" opacity="0.56"/><circle cx="23.7" cy="33.8" r="1.24" fill="#e6b400" opacity="0.59"/><circle cx="19.5" cy="30.1" r="1.27" fill="#e6b400" opacity="0.62"/><circle cx="15.4" cy="28.0" r="1.30" fill="#e6b400" opacity="0.64"/><circle cx="12.4" cy="26.6" r="1.33" fill="#e6b400" opacity="0.67"/><circle cx="7.8" cy="23.8" r="1.37" fill="#e6b400" opacity="0.70"/><circle cx="5.5" cy="20.8" r="1.40" fill="#e6b400" opacity="0.74"/><circle cx="5.4" cy="16.0" r="1.43" fill="#e6b400" opacity="0.77"/><circle cx="7.4" cy="13.2" r="1.46" fill="#e6b400" opacity="0.80"/><circle cx="12.9" cy="11.2" r="1.49" fill="#e6b400" opacity="0.83"/><circle cx="16.6" cy="12.4" r="1.52" fill="#e6b400" opacity="0.86"/><circle cx="19.2" cy="15.0" r="1.56" fill="#e6b400" opacity="0.90"/><circle cx="20.1" cy="11.5" r="1.59" fill="#e6b400" opacity="0.93"/><circle cx="23.6" cy="8.7" r="1.62" fill="#e6b400" opacity="0.97"/><circle cx="27.8" cy="8.7" r="2.7" fill="#e6b400"/></svg>Ginam Kim</a>
+      <ul>
+        <li><a href="index.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="cv.html" aria-current="page">CV</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Yellow highlights = fill in. To make a PDF: open this page in a browser → Print → Save as PDF
+         (the navigation bar and highlights are removed automatically when printing). -->
+    <p class="no-print small muted">
+      Print this page to PDF for a one-page CV. <a href="assets/cv.pdf">Download PDF</a>
+    </p>
+
+    <h1>Ginam Kim</h1>
+    <p class="muted">
+      kkn88@kaist.ac.kr · <a href="https://github.com/GKN68">github.com/GKN68</a>
+    </p>
+
+    <section class="cv-section">
+      <h2>Research Interests</h2>
+      <p>Vehicle dynamics simulation · Data-driven model calibration · Simulation-based vehicle design optimization</p>
+    </section>
+
+    <section class="cv-section">
+      <h2>Education</h2>
+      <div class="cv-item">
+        <div><strong>KAIST</strong>, B.S. in Mechanical Engineering</div>
+        <div class="when">2025 – Present</div>
+        <div class="sub">Coursework: Solid Mechanics, Thermodynamics, Numerical Analysis, Linear Algebra for Data Science,
+          Understanding of Materials and Processing, Basic Mechanical Practice, General Physics I &amp; II</div>
+        <div class="sub">Current (Fall 2026): Dynamics, Fluid Mechanics, Electromagnetics I, Advanced Materials Engineering and its Application</div>
+      </div>
+    </section>
+
+    <section class="cv-section">
+      <h2>Projects</h2>
+
+      <div class="cv-item">
+        <div><strong>PicoSim</strong>, vehicle dynamics simulator (personal project) · Unity, C#, Python</div>
+        <div class="when">2025.12 – Present</div>
+        <ul>
+          <li>Real-time vehicle simulator: 1 kHz physics, Pacejka MF 6.1 tires from measured data.</li>
+          <li>Automated test harness (~24 scenarios) with 100 Hz telemetry export.</li>
+          <li>Force-feedback steering from tire aligning torque.</li>
+        </ul>
+      </div>
+
+      <div class="cv-item">
+        <div><strong>Autonomous Driving Stack for Formula Student</strong> · Python, PyTorch</div>
+        <div class="when">2026.07 – Present</div>
+        <ul>
+          <li>Cone perception (YOLO on simulator-rendered data) and EKF-SLAM.</li>
+          <li>Racing-line optimization and MPC; autonomous laps in simulation.</li>
+        </ul>
+      </div>
+
+      <div class="cv-item">
+        <div><strong>PicoSim Telemetry</strong>, data logger and analysis software (personal project) · ESP32, Arduino, CAN</div>
+        <div class="when">2025.09 – Present</div>
+        <ul>
+          <li>On-car logger, driver dash and wireless pit link (IMU, GPS, suspension, wheel speed, ECU via CAN).</li>
+          <li>Browser-based analysis software with 52 preset graphs and car-vs-simulator comparison.</li>
+        </ul>
+      </div>    </section>
+
+    <section class="cv-section">
+      <h2>Experience</h2>
+      <div class="cv-item">
+        <div><strong>Project Manager</strong>, KAIST ZILZU Formula Student Team</div>
+        <div class="when">2026.09 – Present</div>
+      </div>
+      <div class="cv-item">
+        <div><strong>Powertrain Team Lead</strong>, KAIST ZILZU Formula Student Team</div>
+        <div class="when">2025.09 – 2026.09</div>
+      </div>
+      <div class="cv-item">
+        <div><strong>Frame &amp; Aero Team Member</strong>, KAIST ZILZU Formula Student Team</div>
+        <div class="when">2025.03 – 2025.09</div>
+      </div>
+    </section>
+
+    <section class="cv-section">
+      <h2>Skills</h2>
+      <p><strong>Programming:</strong> C#, Python<br>
+         <strong>Tools:</strong> OptimumLap, SolidWorks, Fusion 360, AutoCAD, ANSYS, GT-POWER, ECUMASTER EMU Client v3, Dynojet Power Core, MATLAB, Unity, PyTorch, etc.</p>
+    </section>
+  </main>
+
+  <footer>© Ginam Kim</footer>
+</body>
+</html>
